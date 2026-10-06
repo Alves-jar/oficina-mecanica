@@ -1,0 +1,593 @@
+[
+ {
+  "codigo": "AD-ORG5",
+  "nome": "Aditivo para radiador 1 L",
+  "qtd": 13,
+  "minimo": 18,
+  "precoCusto": 23,
+  "precoVenda": 32,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "A2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "AL-90A",
+  "nome": "Alternador remanufaturado",
+  "qtd": 20,
+  "minimo": 16,
+  "precoCusto": 375,
+  "precoVenda": 680,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "D4",
+  "compatibilidade": [
+   "Honda Civic",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "Toyota Corolla",
+   "VW Gol 1.6",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "AM-7712",
+  "nome": "Amortecedor dianteiro (par)",
+  "qtd": 16,
+  "minimo": 24,
+  "precoCusto": 353,
+  "precoVenda": 640,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "A6",
+  "compatibilidade": [
+   "Fiat Argo 1.3",
+   "Hyundai HB20",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "BD-4410",
+  "nome": "Bomba d'água",
+  "qtd": 32,
+  "minimo": 20,
+  "precoCusto": 120,
+  "precoVenda": 210,
+  "fornecedor": "Peças & Cia",
+  "localizacao": "D3",
+  "compatibilidade": [
+   "Fiat Argo 1.3",
+   "Honda Fit",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "Renault Kwid"
+  ]
+ },
+ {
+  "codigo": "BM-DH88",
+  "nome": "Bomba da direção hidráulica",
+  "qtd": 20,
+  "minimo": 15,
+  "precoCusto": 406,
+  "precoVenda": 590,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "B3",
+  "compatibilidade": [
+   "Honda Fit",
+   "Renault Kwid",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "BT-60AH",
+  "nome": "Bateria 60Ah",
+  "qtd": 25,
+  "minimo": 19,
+  "precoCusto": 371,
+  "precoVenda": 520,
+  "fornecedor": "Mecânica Center",
+  "localizacao": "A6",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "CA-AUX2",
+  "nome": "Correia auxiliar",
+  "qtd": 21,
+  "minimo": 18,
+  "precoCusto": 57,
+  "precoVenda": 85,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "C4",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Argo 1.3",
+   "Fiat Mobi",
+   "Honda Civic",
+   "Jeep Renegade",
+   "Renault Kwid",
+   "Toyota Corolla",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "CB-0410",
+  "nome": "Coxim do amortecedor (par)",
+  "qtd": 52,
+  "minimo": 24,
+  "precoCusto": 112,
+  "precoVenda": 190,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "C1",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Fiat Mobi",
+   "Honda Civic",
+   "Hyundai HB20",
+   "Renault Kwid",
+   "Toyota Corolla",
+   "VW Gol 1.6",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "CB-IGN7",
+  "nome": "Cabo de vela (jogo)",
+  "qtd": 25,
+  "minimo": 16,
+  "precoCusto": 87,
+  "precoVenda": 130,
+  "fornecedor": "AutoPeças Brasil",
+  "localizacao": "B2",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Argo 1.3",
+   "Fiat Mobi",
+   "Ford Ka",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "Renault Kwid"
+  ]
+ },
+ {
+  "codigo": "CE-0912",
+  "nome": "Cabo de embreagem",
+  "qtd": 17,
+  "minimo": 6,
+  "precoCusto": 58,
+  "precoVenda": 78,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "A2",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Chevrolet Tracker",
+   "Ford Ka",
+   "Honda Civic",
+   "Hyundai HB20",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "Renault Kwid",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "CP-AC77",
+  "nome": "Compressor de ar-condicionado",
+  "qtd": 23,
+  "minimo": 11,
+  "precoCusto": 690,
+  "precoVenda": 1150,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "A5",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Mobi",
+   "Ford Ka",
+   "Honda Fit",
+   "Hyundai HB20",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "CT-CAT9",
+  "nome": "Catalisador",
+  "qtd": 31,
+  "minimo": 11,
+  "precoCusto": 917,
+  "precoVenda": 1250,
+  "fornecedor": "AutoPeças Brasil",
+  "localizacao": "A5",
+  "compatibilidade": [
+   "Fiat Strada",
+   "Ford Ka",
+   "Honda Civic",
+   "Jeep Renegade",
+   "Toyota Corolla"
+  ]
+ },
+ {
+  "codigo": "DF-3340",
+  "nome": "Disco de freio dianteiro (par)",
+  "qtd": 19,
+  "minimo": 6,
+  "precoCusto": 260,
+  "precoVenda": 420,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "A6",
+  "compatibilidade": [
+   "Honda Civic",
+   "Nissan Kicks",
+   "Toyota Corolla"
+  ]
+ },
+ {
+  "codigo": "ES-AB02",
+  "nome": "Abraçadeiras e juntas (kit)",
+  "qtd": 39,
+  "minimo": 11,
+  "precoCusto": 29,
+  "precoVenda": 48,
+  "fornecedor": "AutoPeças Brasil",
+  "localizacao": "B2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "ES-SL330",
+  "nome": "Silencioso traseiro",
+  "qtd": 24,
+  "minimo": 16,
+  "precoCusto": 208,
+  "precoVenda": 310,
+  "fornecedor": "AutoPeças Brasil",
+  "localizacao": "D5",
+  "compatibilidade": [
+   "Fiat Argo 1.3",
+   "Nissan Kicks",
+   "Toyota Corolla",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "FA-2210",
+  "nome": "Filtro de ar",
+  "qtd": 54,
+  "minimo": 24,
+  "precoCusto": 37,
+  "precoVenda": 58,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "C4",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Nissan Kicks",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "FC-AC09",
+  "nome": "Filtro de cabine",
+  "qtd": 30,
+  "minimo": 19,
+  "precoCusto": 31,
+  "precoVenda": 55,
+  "fornecedor": "Peças & Cia",
+  "localizacao": "C1",
+  "compatibilidade": [
+   "Fiat Strada",
+   "Jeep Renegade",
+   "Toyota Corolla",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "FL-DH50",
+  "nome": "Fluido de direção hidráulica",
+  "qtd": 36,
+  "minimo": 21,
+  "precoCusto": 28,
+  "precoVenda": 42,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "C1",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "FL-DOT4",
+  "nome": "Fluido de freio DOT4 500 ml",
+  "qtd": 11,
+  "minimo": 13,
+  "precoCusto": 26,
+  "precoVenda": 38,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "C2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "FO-PH5949",
+  "nome": "Filtro de óleo",
+  "qtd": 35,
+  "minimo": 14,
+  "precoCusto": 29,
+  "precoVenda": 42,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "A5",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Argo 1.3",
+   "Ford Ka",
+   "Hyundai HB20",
+   "Nissan Kicks",
+   "Toyota Corolla",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "GS-134A",
+  "nome": "Gás R134a 350 g",
+  "qtd": 36,
+  "minimo": 23,
+  "precoCusto": 40,
+  "precoVenda": 65,
+  "fornecedor": "Mecânica Center",
+  "localizacao": "C2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "JT-CAR1",
+  "nome": "Junta do cárter",
+  "qtd": 31,
+  "minimo": 15,
+  "precoCusto": 67,
+  "precoVenda": 120,
+  "fornecedor": "AutoPeças Brasil",
+  "localizacao": "A2",
+  "compatibilidade": [
+   "Fiat Strada",
+   "Hyundai HB20",
+   "Renault Kwid"
+  ]
+ },
+ {
+  "codigo": "KC-9031",
+  "nome": "Kit correia dentada",
+  "qtd": 26,
+  "minimo": 18,
+  "precoCusto": 288,
+  "precoVenda": 460,
+  "fornecedor": "Peças & Cia",
+  "localizacao": "B2",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Honda Civic",
+   "VW Gol 1.6",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "KE-4420",
+  "nome": "Kit de embreagem",
+  "qtd": 28,
+  "minimo": 10,
+  "precoCusto": 652,
+  "precoVenda": 890,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "A1",
+  "compatibilidade": [
+   "Ford Ka",
+   "Honda Civic",
+   "Toyota Corolla",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "LP-H7",
+  "nome": "Lâmpada H7 (par)",
+  "qtd": 21,
+  "minimo": 19,
+  "precoCusto": 48,
+  "precoVenda": 78,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "A4",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Fiat Argo 1.3",
+   "Hyundai HB20",
+   "Renault Kwid",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "MG-RAD3",
+  "nome": "Mangueira do radiador",
+  "qtd": 6,
+  "minimo": 15,
+  "precoCusto": 57,
+  "precoVenda": 85,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "D2",
+  "compatibilidade": [
+   "Ford Ka",
+   "Hyundai HB20",
+   "Nissan Kicks",
+   "Renault Kwid",
+   "Toyota Corolla",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "OL-5W30",
+  "nome": "Óleo 5W30 sintético 4 L",
+  "qtd": 52,
+  "minimo": 22,
+  "precoCusto": 117,
+  "precoVenda": 189,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "D2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "PB-CH12",
+  "nome": "Peso de balanceamento (kit)",
+  "qtd": 21,
+  "minimo": 16,
+  "precoCusto": 17,
+  "precoVenda": 25,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "C2",
+  "compatibilidade": [
+   "Universal"
+  ]
+ },
+ {
+  "codigo": "PF-1187",
+  "nome": "Pastilha de freio dianteira",
+  "qtd": 27,
+  "minimo": 6,
+  "precoCusto": 127,
+  "precoVenda": 210,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "D5",
+  "compatibilidade": [
+   "Fiat Argo 1.3",
+   "Fiat Mobi",
+   "Ford Ka",
+   "Honda Fit",
+   "Nissan Kicks",
+   "Toyota Corolla"
+  ]
+ },
+ {
+  "codigo": "PN-175R14",
+  "nome": "Pneu 175/70 R14",
+  "qtd": 19,
+  "minimo": 24,
+  "precoCusto": 195,
+  "precoVenda": 340,
+  "fornecedor": "Mecânica Center",
+  "localizacao": "B1",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Honda Civic",
+   "Nissan Kicks",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "PV-3300",
+  "nome": "Pivô da suspensão",
+  "qtd": 27,
+  "minimo": 20,
+  "precoCusto": 58,
+  "precoVenda": 95,
+  "fornecedor": "Mecânica Center",
+  "localizacao": "B5",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Fiat Argo 1.3",
+   "Fiat Strada",
+   "Honda Fit",
+   "Jeep Renegade",
+   "Nissan Kicks",
+   "VW Gol 1.6"
+  ]
+ },
+ {
+  "codigo": "RD-8855",
+  "nome": "Radiador",
+  "qtd": 35,
+  "minimo": 23,
+  "precoCusto": 539,
+  "precoVenda": 780,
+  "fornecedor": "Mecânica Center",
+  "localizacao": "C4",
+  "compatibilidade": [
+   "Chevrolet Onix",
+   "Fiat Mobi",
+   "Fiat Strada",
+   "Honda Civic",
+   "Hyundai HB20",
+   "Renault Kwid"
+  ]
+ },
+ {
+  "codigo": "SL-O2X",
+  "nome": "Sonda lambda",
+  "qtd": 2,
+  "minimo": 12,
+  "precoCusto": 210,
+  "precoVenda": 340,
+  "fornecedor": "Cofap Atacado",
+  "localizacao": "A4",
+  "compatibilidade": [
+   "Honda Civic",
+   "Hyundai HB20",
+   "Nissan Kicks",
+   "VW Polo"
+  ]
+ },
+ {
+  "codigo": "TB-BAR1",
+  "nome": "Terminal de barra",
+  "qtd": 21,
+  "minimo": 17,
+  "precoCusto": 48,
+  "precoVenda": 70,
+  "fornecedor": "Peças & Cia",
+  "localizacao": "A5",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Ford Ka",
+   "Honda Civic",
+   "Honda Fit",
+   "Hyundai HB20",
+   "Nissan Kicks"
+  ]
+ },
+ {
+  "codigo": "VL-NGK12",
+  "nome": "Vela de ignição (jogo)",
+  "qtd": 19,
+  "minimo": 19,
+  "precoCusto": 106,
+  "precoVenda": 160,
+  "fornecedor": "Importadora Sul",
+  "localizacao": "C5",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Mobi",
+   "Ford Ka",
+   "Honda Fit",
+   "Toyota Corolla"
+  ]
+ },
+ {
+  "codigo": "VT-0230",
+  "nome": "Válvula termostática",
+  "qtd": 45,
+  "minimo": 22,
+  "precoCusto": 60,
+  "precoVenda": 95,
+  "fornecedor": "Distribuidora Rota",
+  "localizacao": "A3",
+  "compatibilidade": [
+   "Chevrolet Tracker",
+   "Fiat Mobi",
+   "Fiat Strada",
+   "Ford Ka",
+   "Hyundai HB20",
+   "Jeep Renegade",
+   "Renault Kwid",
+   "VW Polo"
+  ]
+ }
+]

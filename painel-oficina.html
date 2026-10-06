@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Painel da oficina</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="compartilhado/base.css">
+  <link rel="stylesheet" href="./principal.css">
+</head>
+
+<body>
+
+<header class="top">
+  <div>
+    <span class="brand">Oficina Central</span>
+
+    <nav class="nav" aria-label="Principal">
+      <a href="painel-oficina.html" aria-current="page">Painel</a>
+      <a href="#">Nova ordem</a>
+      <a href="#">Histórico</a>
+      <a href="#">Peças</a>
+    </nav>
+
+    <span class="user">Marcos (administrador)</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="head">
+    <div>
+      <h1>Ordens em andamento</h1>
+      <p id="sub">Carregando…</p>
+    </div>
+
+    <button class="cta" id="nova">
+      Nova ordem de serviço
+    </button>
+  </div>
+
+  <section class="stages" id="stages" aria-label="Ordens por etapa"></section>
+
+  <div class="grid">
+
+    <section class="card">
+
+      <h2>
+        <span id="ltitle">Todas as ordens</span>
+        <small id="lcount"></small>
+      </h2>
+
+      <div class="tools">
+
+        <div class="tabs" id="tabs" role="group" aria-label="Exibir">
+
+          <button data-v="ativas" aria-pressed="false">
+            Ativas
+          </button>
+
+          <button data-v="entregues" aria-pressed="false">
+            Entregues
+          </button>
+
+          <button data-v="todas" aria-pressed="true">
+            Todas
+          </button>
+
+        </div>
+
+        <input
+          id="busca"
+          type="search"
+          placeholder="Buscar placa, modelo ou cliente"
+          aria-label="Buscar ordens">
+
+      </div>
+
+      <div class="scroll">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Ordem</th>
+              <th>Placa</th>
+              <th>Modelo</th>
+              <th>Cliente</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="rows"></tbody>
+
+        </table>
+
+      </div>
+
+      <div class="empty" id="empty" hidden>
+        Nenhuma ordem encontrada.
+      </div>
+
+      <button class="more" id="mais" hidden>
+        Mostrar mais
+      </button>
+
+    </section>
+
+    <aside class="card">
+
+      <h2>
+        Estoque baixo
+        <small id="acount"></small>
+      </h2>
+
+      <div id="alerts"></div>
+
+      <a class="link" href="#" id="pecas">
+        Buscar peças
+      </a>
+
+    </aside>
+
+  </div>
+
+</main>
+
+<div id="toast" role="status"></div>
+
+<script src="compartilhado/util.js"></script>
+<script src="./principal.js"></script>
+
+</body>
+</html>
