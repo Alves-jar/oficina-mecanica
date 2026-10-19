@@ -81,9 +81,11 @@ function filtrada() {
       return false;
     }
 
-    /* Status */
-    if (filtro && o.status !== filtro) {
-      return false;
+    /* Status (etapas só existem para ordens ativas) */
+    if (filtro) {
+      if (o.entregue || o.status !== filtro) {
+        return false;
+      }
     }
 
     /* Pesquisa */
@@ -111,10 +113,7 @@ function desenhaLista() {
 
   var l = filtrada();
 
-  /*
-   * Garante que o limite nunca seja maior que
-   * a quantidade de resultados encontrados.
-   */
+  /* O limite nunca passa da quantidade de resultados */
   var quantidadeExibida = Math.min(limite, l.length);
 
   var resultados = l.slice(0, quantidadeExibida);
@@ -172,25 +171,17 @@ function desenhaLista() {
     (filtro ? ' · ' + ST[filtro] : '');
 
 
-  /*
-   * Mostra a quantidade TOTAL encontrada pelo filtro,
-   * não apenas a quantidade atualmente visível.
-   */
+  /* Quantidade TOTAL encontrada pelo filtro */
   $('lcount').textContent =
     l.length +
     (l.length === 1 ? ' ordem' : ' ordens');
 
 
-  /*
-   * Calcula corretamente quantos ainda faltam.
-   */
+  /* Quantos ainda faltam */
   var restantes = l.length - quantidadeExibida;
 
 
-  /*
-   * Só mostra o botão se realmente houver
-   * mais resultados para carregar.
-   */
+  /* Só mostra o botão se houver mais resultados */
   if (restantes > 0) {
 
     $('mais').hidden = false;
@@ -262,7 +253,7 @@ function desenhaAlertas() {
 
 /* Carrega os dados */
 Promise.all([
-  carregaJson('dados/servicos.json'),
+  carregaOrdens('dados/servicos.json'),
   carregaJson('dados/estoque.json')
 ])
 
@@ -298,9 +289,7 @@ Promise.all([
 });
 
 
-/*
- * Filtro por etapa
- */
+/* Filtro por etapa */
 $('stages').addEventListener(
   'click',
   function(e) {
@@ -311,32 +300,20 @@ $('stages').addEventListener(
       return;
     }
 
-
-    /*
-     * Liga/desliga o filtro.
-     */
+    /* Liga/desliga o filtro */
     if (filtro === b.dataset.s) {
       filtro = '';
     } else {
       filtro = b.dataset.s;
     }
 
-
-    /*
-     * Sempre reinicia a paginação quando
-     * o resultado muda.
-     */
+    /* Reinicia a paginação */
     limite = PASSO;
 
-
-    /*
-     * Se estava em entregues e clicou
-     * em uma etapa, volta para ativas.
-     */
+    /* Se estava em entregues e clicou em uma etapa, volta para ativas */
     if (filtro && visao === 'entregues') {
       visao = 'ativas';
     }
-
 
     desenhaEtapas();
     desenhaLista();
@@ -344,9 +321,7 @@ $('stages').addEventListener(
 );
 
 
-/*
- * Abas Ativas / Entregues / Todas
- */
+/* Abas Ativas / Entregues / Todas */
 $('tabs').addEventListener(
   'click',
   function(e) {
@@ -357,24 +332,23 @@ $('tabs').addEventListener(
       return;
     }
 
-
     visao = b.dataset.v;
 
+    /* Etapas só existem para ordens ativas */
+    if (visao === 'entregues' && filtro) {
+      filtro = '';
+      desenhaEtapas();
+    }
 
-    /*
-     * Reinicia a paginação ao trocar de aba.
-     */
+    /* Reinicia a paginação */
     limite = PASSO;
-
 
     desenhaLista();
   }
 );
 
 
-/*
- * Campo de busca
- */
+/* Campo de busca */
 $('busca').addEventListener(
   'input',
   function(e) {
@@ -384,35 +358,24 @@ $('busca').addEventListener(
         .trim()
         .toLowerCase();
 
-
-    /*
-     * Reinicia a paginação ao pesquisar.
-     */
+    /* Reinicia a paginação */
     limite = PASSO;
-
 
     desenhaLista();
   }
 );
 
 
-/*
- * Mostrar mais
- */
+/* Mostrar mais */
 $('mais').onclick = function() {
 
-  /*
-   * Aumenta a quantidade exibida.
-   */
   limite += PASSO;
 
   desenhaLista();
 };
 
 
-/*
- * Abre o serviço
- */
+/* Abre o serviço */
 function abre(e) {
 
   var r =
@@ -422,14 +385,12 @@ function abre(e) {
     return;
   }
 
-
   if (
     e.type === 'keydown' &&
     e.key !== 'Enter'
   ) {
     return;
   }
-
 
   location.href =
     'servico/servico.html?id=' +
@@ -452,9 +413,7 @@ $('rows').addEventListener(
 /* Nova ordem */
 $('nova').onclick = function() {
 
-  toast(
-    'Abrindo o formulário de nova ordem'
-  );
+  location.href = 'nova-ordem/nova-ordem.html';
 
 };
 

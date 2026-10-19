@@ -4,7 +4,7 @@ var id=parseInt(new URLSearchParams(location.search).get('id'),10)||1048;
 function erro(msg){$('app').innerHTML='<a class="back" href="../painel-oficina.html">← Voltar ao painel</a><div class="err">'+msg+'</div>'}
 function horas(h){return h.toLocaleString('pt-BR')+' h'}
 
-carregaJson('../dados/servicos.json').then(function(lista){
+carregaOrdens('../dados/servicos.json').then(function(lista){
   os=lista.filter(function(o){return o.id===id})[0];
   if(!os)return erro('Ordem #'+id+' não encontrada.');
   document.title='Ordem #'+os.id+' · Oficina Central';
@@ -67,6 +67,7 @@ function muda(e){
   if(novo==='pronto'){obs='Serviço concluído. Cliente avisado automaticamente por '+os.cliente.aviso;os.clienteAvisado={em:agora,canal:os.cliente.aviso}}
   os.status=novo;
   os.historico.push({data:agora,de:antes,para:novo,usuario:'Marcos',obs:obs});
+  atualizaOrdemLocal(os);
   desenha();
   if(novo==='pronto'){var n=$('notice');n.textContent='Cliente avisado por '+os.cliente.aviso+' ('+os.cliente.nome+').';n.className='notice on'}
   $('st').focus();

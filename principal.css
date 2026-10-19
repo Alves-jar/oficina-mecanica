@@ -35,4 +35,5 @@ tbody tr:hover{background:var(--bg)}
 #busca{flex:1;min-width:200px;font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .more{display:block;width:100%;background:none;border:0;border-top:1px solid var(--line);padding:12px;color:var(--accent);font-weight:600}
 .more:hover{background:var(--bg)}
+.more[hidden]{display:none}
 .num{color:var(--muted);font-variant-numeric:tabular-nums}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Nova ordem de serviço · Oficina Central</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../compartilhado/base.css">
+    <link rel="stylesheet" href="nova-ordem.css">
+</head>
+
+<body>
+
+    <header class="top">
+        <div>
+            <span class="brand">Oficina Central</span>
+            <nav class="nav" aria-label="Principal">
+                <a href="../painel-oficina.html">Painel</a>
+                <a href="nova-ordem.html" aria-current="page">Nova ordem</a>
+                <a href="#">Histórico</a>
+                <a href="#">Peças</a>
+            </nav>
+            <span class="user">Marcos (administrador)</span>
+        </div>
+    </header>
+
+    <main>
+        <a class="back" href="../painel-oficina.html">← Voltar ao painel</a>
+
+        <div class="head">
+            <div>
+                <h1>Nova ordem de serviço</h1>
+                <p class="muted" id="sub">Carregando…</p>
+            </div>
+        </div>
+
+        <div class="banner" id="banner" role="alert" hidden></div>
+
+        <form id="form" class="grid" novalidate autocomplete="off">
+
+            <div class="col">
+
+                <!-- CLIENTE -->
+                <section class="card">
+                    <h2>Cliente</h2>
+                    <div class="fields">
+                        <div class="f s4">
+                            <label for="nome" class="req">Nome</label>
+                            <input id="nome" list="dl-clientes" autocomplete="off" aria-describedby="e-nome h-cliente">
+                            <span class="erro" id="e-nome"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="cpf" class="req">CPF</label>
+                            <input id="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"
+                                aria-describedby="e-cpf">
+                            <span class="erro" id="e-cpf"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="tel" class="req">Telefone</label>
+                            <input id="tel" type="tel" inputmode="tel" maxlength="15" placeholder="(11) 90000-0000"
+                                aria-describedby="e-tel">
+                            <span class="erro" id="e-tel"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="email">E-mail</label>
+                            <input id="email" type="email" aria-describedby="e-email">
+                            <span class="erro" id="e-email"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="aviso" class="req">Avisar o cliente por</label>
+                            <select id="aviso" aria-describedby="e-aviso">
+                                <option value="">Selecione</option>
+                                <option>WhatsApp</option>
+                                <option>SMS</option>
+                                <option>E-mail</option>
+                                <option>Ligação</option>
+                            </select>
+                            <span class="erro" id="e-aviso"></span>
+                        </div>
+                        <div class="f s6">
+                            <label for="endereco">Endereço</label>
+                            <input id="endereco">
+                        </div>
+                        <p class="hint s6" id="h-cliente" hidden></p>
+                    </div>
+                </section>
+
+                <!-- VEÍCULO -->
+                <section class="card">
+                    <h2>Veículo</h2>
+                    <div class="fields">
+                        <div class="f s2">
+                            <label for="placa" class="req">Placa</label>
+                            <input id="placa" list="dl-placas" maxlength="8" placeholder="ABC-1D23"
+                                aria-describedby="e-placa">
+                            <span class="erro" id="e-placa"></span>
+                        </div>
+                        <div class="f s4">
+                            <label for="modelo" class="req">Modelo</label>
+                            <input id="modelo" list="dl-modelos" placeholder="Ex.: Fiat Argo 1.3"
+                                aria-describedby="e-modelo">
+                            <span class="erro" id="e-modelo"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="ano" class="req">Ano</label>
+                            <input id="ano" type="number" inputmode="numeric" min="1950" aria-describedby="e-ano">
+                            <span class="erro" id="e-ano"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="cor">Cor</label>
+                            <input id="cor">
+                        </div>
+                        <div class="f s2">
+                            <label for="comb" class="req">Combustível</label>
+                            <select id="comb" aria-describedby="e-comb">
+                                <option value="">Selecione</option>
+                                <option>Flex</option>
+                                <option>Gasolina</option>
+                                <option>Diesel</option>
+                                <option>Etanol</option>
+                                <option>Híbrido</option>
+                                <option>Elétrico</option>
+                            </select>
+                            <span class="erro" id="e-comb"></span>
+                        </div>
+                        <div class="f s3">
+                            <label for="km" class="req">Quilometragem atual</label>
+                            <input id="km" type="number" inputmode="numeric" min="0" step="1" aria-describedby="e-km">
+                            <span class="erro" id="e-km"></span>
+                        </div>
+                        <p class="hint s6" id="h-veiculo" hidden></p>
+                    </div>
+                </section>
+
+                <!-- PROBLEMA -->
+                <section class="card">
+                    <h2>Problema e atendimento</h2>
+                    <div class="fields">
+                        <div class="f s6">
+                            <label for="problema" class="req">Problema relatado pelo cliente</label>
+                            <textarea id="problema" rows="2" aria-describedby="e-problema"></textarea>
+                            <span class="erro" id="e-problema"></span>
+                        </div>
+                        <div class="f s6">
+                            <label for="diag">Diagnóstico inicial</label>
+                            <textarea id="diag" rows="2"
+                                placeholder="Pode ficar em branco e ser preenchido depois"></textarea>
+                        </div>
+                        <div class="f s6">
+                            <label for="obs">Observações</label>
+                            <textarea id="obs" rows="2"></textarea>
+                        </div>
+                        <div class="f s2">
+                            <label for="mec" class="req">Mecânico responsável</label>
+                            <select id="mec" aria-describedby="e-mec">
+                                <option value="">Selecione</option>
+                            </select>
+                            <span class="erro" id="e-mec"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="prev" class="req">Previsão de entrega</label>
+                            <input id="prev" type="date" aria-describedby="e-prev">
+                            <span class="erro" id="e-prev"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="prio">Prioridade</label>
+                            <select id="prio">
+                                <option value="normal">Normal</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SERVIÇOS -->
+                <section class="card">
+                    <h2>Serviços (mão de obra)</h2>
+                    <div class="body">
+                        <div class="linha cab" aria-hidden="true"><span>Descrição</span><span>Horas</span><span>Valor
+                                (R$)</span><span></span></div>
+                        <div id="srv-rows"></div>
+                        <span class="erro" id="e-srv"></span>
+                        <button type="button" class="ghost" id="srv-add">+ Adicionar serviço</button>
+                    </div>
+                </section>
+
+                <!-- PEÇAS -->
+                <section class="card">
+                    <h2>Peças</h2>
+                    <div class="body">
+                        <div class="add-peca">
+                            <div class="f">
+                                <label for="pc-sel">Peça do estoque</label>
+                                <select id="pc-sel"></select>
+                            </div>
+                            <div class="f qtd">
+                                <label for="pc-qtd">Qtd</label>
+                                <input id="pc-qtd" type="number" min="1" step="1" value="1" inputmode="numeric">
+                            </div>
+                            <button type="button" class="ghost" id="pc-add">Adicionar peça</button>
+                        </div>
+                        <span class="erro" id="e-pec"></span>
+                        <div class="scroll">
+                            <table id="pc-tab" hidden>
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Peça</th>
+                                        <th class="r">Qtd</th>
+                                        <th class="r">Unitário</th>
+                                        <th class="r">Valor</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pc-rows"></tbody>
+                            </table>
+                        </div>
+                        <p class="muted vazio" id="pc-vazio">Nenhuma peça adicionada.</p>
+                    </div>
+                </section>
+
+                <!-- PAGAMENTO -->
+                <section class="card">
+                    <h2>Orçamento e pagamento</h2>
+                    <div class="fields">
+                        <div class="f s2">
+                            <label for="desc">Desconto (R$)</label>
+                            <input id="desc" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0,00"
+                                aria-describedby="e-desc">
+                            <span class="erro" id="e-desc"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="pgto" class="req">Forma de pagamento</label>
+                            <select id="pgto" aria-describedby="e-pgto">
+                                <option value="">Selecione</option>
+                                <option>Pix</option>
+                                <option>Dinheiro</option>
+                                <option>Cartão de débito</option>
+                                <option>Cartão de crédito (2x)</option>
+                                <option>Cartão de crédito (3x)</option>
+                                <option>Cartão de crédito (6x)</option>
+                                <option>Boleto</option>
+                            </select>
+                            <span class="erro" id="e-pgto"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="validade" class="req">Validade do orçamento</label>
+                            <input id="validade" type="date" aria-describedby="e-validade">
+                            <span class="erro" id="e-validade"></span>
+                        </div>
+                        <div class="f s2">
+                            <label for="garantia">Garantia</label>
+                            <select id="garantia">
+                                <option>30 dias</option>
+                                <option selected>90 dias</option>
+                                <option>6 meses</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside class="card side">
+                <h2>Resumo</h2>
+                <div class="body">
+                    <dl>
+                        <dt>Serviços</dt>
+                        <dd id="t-srv">R$ 0,00</dd>
+                        <dt>Peças</dt>
+                        <dd id="t-pec">R$ 0,00</dd>
+                        <dt>Desconto</dt>
+                        <dd id="t-desc" class="neg">—</dd>
+                    </dl>
+                    <div class="total"><span>Total</span><b id="t-total">R$ 0,00</b></div>
+                    <p class="muted peq">A ordem é criada com o status <b>Recebido</b> e o orçamento como estimativa
+                        preliminar. Você pode mudar o status depois, na tela do serviço.</p>
+                    <button type="submit" class="cta" id="salvar">Criar ordem</button>
+                    <a class="cancelar" href="../painel-oficina.html">Cancelar</a>
+                </div>
+            </aside>
+
+        </form>
+    </main>
+
+    <datalist id="dl-clientes"></datalist>
+    <datalist id="dl-placas"></datalist>
+    <datalist id="dl-modelos"></datalist>
+    <datalist id="dl-servicos"></datalist>
+
+    <script src="../compartilhado/util.js"></script>
+    <script src="nova-ordem.js"></script>
+</body>
+
+</html>
