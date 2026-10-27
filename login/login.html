@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101820">
+  <title>Login | Meu Sistema</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login.css">
+  <script src="login.js" defer></script>
+</head>
+
+<body>
+  <main class="login-container">
+    <section class="login-card" aria-labelledby="login-title">
+
+      <header class="login-header">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 5h7v7H4zM13 5h7v4h-7zM13 11h7v8h-7zM4 14h7v5H4z"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <h1 id="login-title">Acessar sistema</h1>
+        <p>Entre com suas credenciais para continuar.</p>
+      </header>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seu@email.com"
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Digite sua senha"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="toggle-password"
+              id="toggle-password"
+              aria-label="Mostrar senha"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" fill="none"
+                aria-hidden="true">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"/>
+                <circle cx="12" cy="12" r="3"
+                  stroke="currentColor"
+                  stroke-width="1.7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            <span>Manter conectado</span>
+          </label>
+
+          <a href="#" id="forgot-password">
+            Esqueci a senha
+          </a>
+        </div>
+
+        <button type="submit" class="cta" id="login-button">
+          Entrar <span aria-hidden="true">→</span>
+        </button>
+
+        <p id="message" class="message" role="status"
+          aria-live="polite"></p>
+      </form>
+
+      <footer class="login-footer">
+        Acesso restrito a usuários autorizados.
+      </footer>
+
+    </section>
+
+    <p class="copyright">
+      &copy; <span id="year"></span> Meu Sistema
+    </p>
+  </main>
+</body>
+</html>
