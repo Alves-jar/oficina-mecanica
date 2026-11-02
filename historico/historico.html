@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Histórico de serviços · Oficina Central</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartilhado/base.css">
+  <link rel="stylesheet" href="historico.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <span class="brand">Oficina Central</span>
+      <nav class="nav" aria-label="Principal">
+        <a href="../painel-oficina.html">Painel</a>
+        <a href="../nova-ordem/nova-ordem.html">Nova ordem</a>
+        <a href="historico.html" aria-current="page">Histórico</a>
+        <a href="#">Peças</a>
+      </nav>
+      <span class="user">Carregando usuário…</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="head">
+      <div>
+        <h1>Histórico de serviços</h1>
+        <p class="muted">Consulta de manutenções por veículo, cliente e data.</p>
+      </div>
+    </div>
+
+    <section class="card filters">
+      <div class="search-wrap">
+        <label class="sr-only" for="busca">Buscar por placa ou cliente</label>
+        <input id="busca" type="search" placeholder="Buscar por placa, modelo ou cliente">
+      </div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section id="lista" class="history-list" aria-live="polite"></section>
+    <div id="empty" class="empty" hidden>Nenhum histórico encontrado.</div>
+  </main>
+
+  <script src="../compartilhado/util.js"></script>
+  <script src="historico.js"></script>
+</body>
+</html>

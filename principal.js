@@ -252,9 +252,11 @@ function desenhaAlertas() {
 
 
 /* Carrega os dados */
+atualizaUsuarioBarra();
+
 Promise.all([
-  carregaOrdens('dados/servicos.json'),
-  carregaJson('dados/estoque.json')
+  carregaOrdens(DATASET.servicos),
+  carregaEntidade('pecas', DATASET.estoque)
 ])
 
 .then(function(r) {

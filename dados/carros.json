@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "clienteId": 1,
+    "placa": "BTR-2K40",
+    "modelo": "Chevrolet Tracker",
+    "ano": 2018,
+    "cor": "Azul",
+    "combustivel": "Flex",
+    "km": 98706,
+    "proximaRevisao": {
+      "km": 108706,
+      "data": "2027-03-31"
+    }
+  },
+  {
+    "id": 2,
+    "clienteId": 2,
+    "placa": "CJG-0K89",
+    "modelo": "Fiat Mobi",
+    "ano": 2022,
+    "cor": "Branco",
+    "combustivel": "Flex",
+    "km": 63549,
+    "proximaRevisao": {
+      "km": 73549,
+      "data": "2027-04-09"
+    }
+  },
+  {
+    "id": 3,
+    "clienteId": 3,
+    "placa": "ABC-1D23",
+    "modelo": "Honda Civic",
+    "ano": 2019,
+    "cor": "Prata",
+    "combustivel": "Gasolina",
+    "km": 88210,
+    "proximaRevisao": {
+      "km": 98210,
+      "data": "2027-01-15"
+    }
+  }
+]

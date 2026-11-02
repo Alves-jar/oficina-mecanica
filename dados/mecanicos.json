@@ -1,0 +1,29 @@
+[
+  { "id": 1, "nome": "Marcos", "cargo": "Administrador", "setor": "Gestão" },
+  {
+    "id": 2,
+    "nome": "Renato Lima",
+    "cargo": "Mecânico",
+    "setor": "Manutenção"
+  },
+  {
+    "id": 3,
+    "nome": "Carlos Pereira",
+    "cargo": "Mecânico",
+    "setor": "Manutenção"
+  },
+  {
+    "id": 4,
+    "nome": "Diego Santos",
+    "cargo": "Mecânico",
+    "setor": "Manutenção"
+  },
+  {
+    "id": 5,
+    "nome": "Wagner Silva",
+    "cargo": "Mecânico",
+    "setor": "Manutenção"
+  },
+  { "id": 6, "nome": "Edson", "cargo": "Assistente", "setor": "Operação" },
+  { "id": 7, "nome": "Juliana", "cargo": "Assistente", "setor": "Operação" }
+]

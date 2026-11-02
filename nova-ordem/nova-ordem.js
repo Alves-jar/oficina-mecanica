@@ -1,10 +1,11 @@
 /* Tela de nova ordem: lê dados/servicos.json e dados/estoque.json
    e grava a ordem criada em localStorage (ver util.js) */
 
-var USUARIO = 'Marcos';
+var USUARIO = usuarioAtual().nome || 'Administrador';
 
 var TODAS = [];      /* ordens existentes (json + criadas no sistema) */
 var ESTOQUE = [];
+var MECANICOS = [];
 var CLIENTES = {};   /* nome (minúsculo) -> ordem mais recente do cliente */
 var VEICULOS = {};   /* placa -> ordem mais recente do veículo */
 
@@ -85,13 +86,17 @@ function aviso(el, texto, alerta) {
 /* ---------- carregamento ---------- */
 
 Promise.all([
-  carregaOrdens('../dados/servicos.json'),
-  carregaJson('../dados/estoque.json')
+  carregaOrdens(DATASET.servicos),
+  carregaEntidade('pecas', DATASET.estoque),
+  carregaEntidade('mecanicos', DATASET.mecanicos)
 ])
 .then(function (r) {
 
   TODAS = r[0].sort(function (a, b) { return b.id - a.id; });
   ESTOQUE = r[1].slice().sort(function (a, b) { return a.nome.localeCompare(b.nome, 'pt-BR'); });
+  MECANICOS = r[2] || [];
+  USUARIO = usuarioAtual().nome || 'Administrador';
+  atualizaUsuarioBarra();
 
   prepara();
 
@@ -121,10 +126,21 @@ function prepara() {
 
     if (!VEICULOS[o.veiculo.placa]) VEICULOS[o.veiculo.placa] = o;
 
-    mecanicos[o.mecanico] = 1;
     modelos[o.veiculo.modelo] = 1;
     o.servicos.forEach(function (s) { descricoes[s.descricao] = 1; });
   });
+
+  if (MECANICOS && MECANICOS.length) {
+    MECANICOS.forEach(function (m) {
+      if (m && m.nome) mecanicos[m.nome] = 1;
+    });
+  }
+
+  if (!Object.keys(mecanicos).length) {
+    TODAS.forEach(function (o) {
+      if (o && o.mecanico) mecanicos[o.mecanico] = 1;
+    });
+  }
 
   function opcoes(obj) {
     return Object.keys(obj).sort(function (a, b) { return a.localeCompare(b, 'pt-BR'); })

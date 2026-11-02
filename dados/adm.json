@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "nome": "Marcos",
+    "cargo": "Administrador",
+    "login": "marcos",
+    "email": "marcos@oficina.local",
+    "senha": "admin123",
+    "status": "ativo",
+    "permissoes": [
+      "dashboard",
+      "ordens",
+      "estoque",
+      "clientes",
+      "carros"
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Renato Lima",
+    "cargo": "Mecânico",
+    "login": "renato",
+    "email": "renato@oficina.local",
+    "senha": "admin123",
+    "status": "ativo",
+    "permissoes": [
+      "ordens",
+      "diagnostico"
+    ]
+  }
+]

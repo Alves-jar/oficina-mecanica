@@ -1,0 +1,70 @@
+[
+  {
+    "codigo": "AD-ORG5",
+    "nome": "Aditivo para radiador 1 L",
+    "qtd": 13,
+    "minimo": 18,
+    "precoCusto": 23,
+    "precoVenda": 32,
+    "fornecedor": "Cofap Atacado",
+    "localizacao": "A2",
+    "compatibilidade": ["Universal"]
+  },
+  {
+    "codigo": "AL-90A",
+    "nome": "Alternador remanufaturado",
+    "qtd": 20,
+    "minimo": 16,
+    "precoCusto": 375,
+    "precoVenda": 680,
+    "fornecedor": "Cofap Atacado",
+    "localizacao": "D4",
+    "compatibilidade": [
+      "Honda Civic",
+      "Jeep Renegade",
+      "Nissan Kicks",
+      "Toyota Corolla",
+      "VW Gol 1.6",
+      "VW Polo"
+    ]
+  },
+  {
+    "codigo": "AM-7712",
+    "nome": "Amortecedor dianteiro (par)",
+    "qtd": 16,
+    "minimo": 24,
+    "precoCusto": 353,
+    "precoVenda": 640,
+    "fornecedor": "Importadora Sul",
+    "localizacao": "A6",
+    "compatibilidade": ["Fiat Argo 1.3", "Hyundai HB20", "VW Polo"]
+  },
+  {
+    "codigo": "BD-4410",
+    "nome": "Bomba d'água",
+    "qtd": 32,
+    "minimo": 20,
+    "precoCusto": 120,
+    "precoVenda": 210,
+    "fornecedor": "Peças & Cia",
+    "localizacao": "D3",
+    "compatibilidade": [
+      "Fiat Argo 1.3",
+      "Honda Fit",
+      "Jeep Renegade",
+      "Nissan Kicks",
+      "Renault Kwid"
+    ]
+  },
+  {
+    "codigo": "PN-175R14",
+    "nome": "Pneu 175/70 R14",
+    "qtd": 18,
+    "minimo": 10,
+    "precoCusto": 280,
+    "precoVenda": 341,
+    "fornecedor": "Importadora Sul",
+    "localizacao": "F2",
+    "compatibilidade": ["Chevrolet Tracker", "Fiat Mobi", "Honda Civic"]
+  }
+]

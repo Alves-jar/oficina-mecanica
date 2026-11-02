@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "nome": "Eduardo Ferreira",
+    "cpf": "570.752.568-80",
+    "telefone": "(11) 98767-6114",
+    "email": "eduardo.ferreira@email.com",
+    "senha": "cliente123",
+    "aviso": "SMS",
+    "endereco": "Rua Vergueiro, 1296 – Lapa, São Paulo/SP",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Sérgio Almeida",
+    "cpf": "130.283.422-79",
+    "telefone": "(11) 93371-3685",
+    "email": "sergio.almeida@email.com",
+    "senha": "cliente123",
+    "aviso": "WhatsApp",
+    "endereco": "Av. Paulista, 1064 – Vila Mariana, São Paulo/SP",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Ana Paula Costa",
+    "cpf": "888.123.444-20",
+    "telefone": "(11) 97410-4422",
+    "email": "ana.paula@email.com",
+    "senha": "cliente123",
+    "aviso": "E-mail",
+    "endereco": "Rua da Consolação, 320 – Consolação, São Paulo/SP",
+    "ativo": true
+  }
+]

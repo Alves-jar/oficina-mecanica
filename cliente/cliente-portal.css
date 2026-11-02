@@ -1,0 +1,251 @@
+:root {
+  --bg: #0f151b;
+  --panel: #17242d;
+  --panel-strong: #1d2e3a;
+  --surface: #111b22;
+  --line: #2a3d4d;
+  --ink: #edf3f7;
+  --muted: #9ab0bf;
+  --accent: #5ad0c7;
+  --accent-strong: #8fe9df;
+  --success: #9fe6b8;
+  --warning: #ffd88a;
+  --danger: #ff9d9d;
+  --shadow: rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(90, 208, 199, 0.12), transparent 32%),
+    var(--bg);
+  color: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+button, input {
+  font: inherit;
+}
+
+.portal-shell {
+  width: min(100%, 860px);
+}
+
+.portal-card {
+  background: rgba(23, 36, 45, 0.95);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px var(--shadow);
+  padding: 28px;
+}
+
+.portal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.portal-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.ghost-btn,
+.cta {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.ghost-btn:hover,
+.cta:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 10px 16px;
+}
+
+.usuario-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(90, 208, 199, 0.08);
+  border: 1px solid rgba(90, 208, 199, 0.24);
+  margin-bottom: 22px;
+}
+
+.usuario-box span {
+  color: var(--muted);
+}
+
+.usuario-box strong {
+  color: var(--ink);
+
+}
+
+.cliente-form {
+  margin-bottom: 12px;
+}
+
+.cliente-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-row input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  outline: none;
+}
+
+.search-row input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(90, 208, 199, 0.12);
+}
+
+.cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #062c2d;
+  padding: 14px 22px;
+}
+
+.message {
+  min-height: 24px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.message.success {
+  color: var(--success);
+}
+
+.resultado {
+  margin-top: 26px;
+}
+
+.resultado-topo h2 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+}
+
+.lista-servicos {
+  display: grid;
+  gap: 16px;
+}
+
+.item-servico {
+  background: rgba(17, 27, 34, 0.75);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.item-servico h3 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+}
+
+.item-servico .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.item-servico .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 216, 138, 0.12);
+  color: var(--warning);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.item-servico ul {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--ink);
+}
+
+.item-servico li + li {
+  margin-top: 6px;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 16px;
+  }
+
+  .portal-card {
+    padding: 20px 16px;
+  }
+
+  .portal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ghost-btn,
+  .cta {
+    width: 100%;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+}

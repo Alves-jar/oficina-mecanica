@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal do Cliente | Oficina Central</title>
+  <link rel="stylesheet" href="cliente-portal.css">
+</head>
+<body>
+  <main class="portal-shell">
+    <section class="portal-card">
+      <header class="portal-header">
+        <div>
+          <p class="eyebrow">Portal do cliente</p>
+          <h1>Consultar veículo</h1>
+        </div>
+        <button id="logout-btn" class="ghost-btn" type="button">Sair</button>
+      </header>
+
+      <div class="usuario-box">
+        <span>Conectado como</span>
+        <strong id="usuario-nome">Cliente</strong>
+      </div>
+
+      <form id="cliente-form" class="cliente-form">
+        <label for="placa">Digite a placa do veículo</label>
+        <div class="search-row">
+          <input id="placa" name="placa" type="text" placeholder="Ex.: BTR-2K40" autocomplete="off" required>
+          <button type="submit" class="cta">Buscar</button>
+        </div>
+      </form>
+
+      <p id="message" class="message" aria-live="polite"></p>
+
+      <section id="resultado" class="resultado" hidden>
+        <div class="resultado-topo">
+          <h2>Serviços encontrados</h2>
+        </div>
+        <div id="lista-servicos" class="lista-servicos"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../compartilhado/util.js"></script>
+  <script src="cliente-portal.js"></script>
+</body>
+</html>
