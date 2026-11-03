@@ -1,7 +1,7 @@
 /* Tela de detalhe: lê dados/servicos.json e exibe a ordem do parâmetro ?id= */
 atualizaUsuarioBarra();
 var os = null;
-var id = parseInt(new URLSearchParams(location.search).get("id"), 10) || 1048;
+var id = parseInt(new URLSearchParams(location.search).get("id"), 10);
 function erro(msg) {
   $("app").innerHTML =
     '<a class="back" href="../painel-oficina.html">← Voltar ao painel</a><div class="err">' +
@@ -177,8 +177,6 @@ function desenha() {
     esc(c.telefone) +
     "</dd><dt>E-mail</dt><dd>" +
     esc(c.email) +
-    "</dd><dt>Endereço</dt><dd>" +
-    esc(c.endereco) +
     "</dd><dt>Aviso por</dt><dd>" +
     esc(c.aviso) +
     "</dd></dl></div></section>" +
@@ -278,8 +276,14 @@ function muda(e) {
     usuario: usuarioAtual().nome || "Administrador",
     obs: obs,
   });
-  atualizaOrdemLocal(os);
-  desenha();
+  atualizarOrdem(os)
+    .then(function () {
+      desenha();
+    })
+    .catch(function (erro) {
+      console.error(erro);
+      alert('Erro ao atualizar ordem: ' + (erro.message || ''));
+    });
   if (novo === "pronto") {
     var n = $("notice");
     n.textContent =

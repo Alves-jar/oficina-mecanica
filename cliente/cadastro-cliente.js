@@ -8,7 +8,7 @@ const message = document.getElementById('message');
 const cadastrarButton = document.getElementById('cadastrar-button');
 
 const STORAGE_KEY = 'oficina.usuario';
-const CLIENTES_LOCAIS_KEY = 'oficina.clientes.locais';
+const API_BASE = 'http://localhost:3000/api';
 
 function normaliza(valor) {
   return String(valor || '').trim().toLowerCase();
@@ -24,18 +24,6 @@ function limparMensagem() {
   message.className = 'message';
 }
 
-function lerClientesLocais() {
-  try {
-    const clientes = JSON.parse(localStorage.getItem(CLIENTES_LOCAIS_KEY) || '[]');
-    return Array.isArray(clientes) ? clientes : [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function salvarClientesLocais(clientes) {
-  localStorage.setItem(CLIENTES_LOCAIS_KEY, JSON.stringify(clientes));
-}
 
 function salvarUsuario(usuario) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
@@ -74,7 +62,7 @@ togglePassword.addEventListener('click', function () {
   input.addEventListener('input', limparMensagem);
 });
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const nome = nomeInput.value.trim();
@@ -88,36 +76,39 @@ form.addEventListener('submit', function (event) {
     return;
   }
 
-  const clientes = lerClientesLocais();
-  const jaExiste = clientes.some(function (cliente) {
-    return normaliza(cliente.email) === normaliza(email);
-  });
-
-  if (jaExiste) {
-    mostrarMensagem('Esse e-mail já está cadastrado. Tente fazer login.', 'error');
-    return;
-  }
-
-  const novoCliente = {
-    id: Date.now(),
-    nome: nome,
-    email: email,
-    senha: senha,
-    telefone: telefone,
-    aviso: 'E-mail',
-    endereco: '',
-    ativo: true
-  };
-
-  clientes.push(novoCliente);
-  salvarClientesLocais(clientes);
-  salvarUsuario(novoCliente);
-
   cadastrarButton.disabled = true;
   cadastrarButton.textContent = 'Cadastrando...';
-  mostrarMensagem('Cadastro realizado com sucesso. Entrando...', 'success');
 
-  setTimeout(function () {
-    window.location.href = 'cliente-portal.html';
-  }, 400);
+  try {
+    const resposta = await fetch(API_BASE + '/clientes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: nome,
+        email: email,
+        senha: senha,
+        telefone: telefone,
+        aviso: 'E-mail',
+        ativo: true
+      })
+    });
+
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(erro.erro || 'Erro ao cadastrar');
+    }
+
+    const cliente = await resposta.json();
+    salvarUsuario(cliente);
+
+    mostrarMensagem('Cadastro realizado com sucesso! Você já está logado.', 'success');
+
+    setTimeout(function () {
+      window.location.href = 'cliente-portal.html';
+    }, 1500);
+  } catch (erro) {
+    mostrarMensagem(erro.message || 'Erro ao cadastrar cliente.', 'error');
+    cadastrarButton.disabled = false;
+    cadastrarButton.textContent = 'Cadastrar';
+  }
 });

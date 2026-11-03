@@ -1,5 +1,5 @@
 /* Tela de nova ordem: lê dados/servicos.json e dados/estoque.json
-   e grava a ordem criada em localStorage (ver util.js) */
+   e grava a ordem criada no servidor via API */
 
 var USUARIO = usuarioAtual().nome || 'Administrador';
 
@@ -190,7 +190,6 @@ function preencheCliente(c) {
   $('tel').value = mascaraTel(c.telefone);
   $('email').value = c.email === 'Não informado' ? '' : c.email;
   $('aviso').value = c.aviso;
-  $('endereco').value = c.endereco === 'Não informado' ? '' : c.endereco;
 }
 
 /* escolheu um cliente já cadastrado na lista */
@@ -558,22 +557,22 @@ $('form').addEventListener('submit', function (e) {
 
   var os = montaOrdem();
 
-  var locais = ordensLocais();
-  locais.push(os);
-
-  if (!salvaOrdensLocais(locais)) {
-
-    var b = $('banner');
-    b.hidden = false;
-    b.textContent = 'Não foi possível salvar a ordem. O armazenamento do navegador está indisponível ou cheio.';
-    b.scrollIntoView({ block: 'center' });
-    return;
-  }
-
   $('salvar').disabled = true;
-  $('salvar').textContent = 'Ordem criada…';
+  $('salvar').textContent = 'Criando ordem…';
 
-  location.href = '../servico/servico.html?id=' + os.id;
+  criarOrdem(os)
+    .then(function (ordemCriada) {
+      location.href = '../servico/servico.html?id=' + ordemCriada.id;
+    })
+    .catch(function (erro) {
+      console.error(erro);
+      var b = $('banner');
+      b.hidden = false;
+      b.textContent = 'Não foi possível criar a ordem. ' + (erro.message || '');
+      b.scrollIntoView({ block: 'center' });
+      $('salvar').disabled = false;
+      $('salvar').textContent = 'Criar ordem';
+    });
 });
 
 function montaOrdem() {
@@ -586,10 +585,6 @@ function montaOrdem() {
   var rev = new Date();
   rev.setMonth(rev.getMonth() + 6);
 
-  /* pega o maior id entre as ordens carregadas e as já salvas, para não repetir número */
-  var maior = Math.max.apply(null,
-    TODAS.map(function (o) { return o.id; }).concat(ordensLocais().map(function (o) { return o.id; })));
-
   var lista = servicos
     .filter(function (s) { return s.descricao.trim(); })
     .map(function (s) {
@@ -597,11 +592,9 @@ function montaOrdem() {
     });
 
   return {
-    id: maior + 1,
     entregue: false,
     status: 'recebido',
     prioridade: $('prio').value,
-    criadoEm: agora,
     previsaoEntrega: $('prev').value,
     entregueEm: null,
     mecanico: $('mec').value,
@@ -611,8 +604,7 @@ function montaOrdem() {
       cpf: $('cpf').value,
       telefone: $('tel').value,
       email: $('email').value.trim() || 'Não informado',
-      aviso: $('aviso').value,
-      endereco: $('endereco').value.trim() || 'Não informado'
+      aviso: $('aviso').value
     },
 
     veiculo: {

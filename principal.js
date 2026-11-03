@@ -430,3 +430,10 @@ $('pecas').onclick = function(e) {
   );
 
 };
+
+
+/* Logout */
+$('logout-btn').onclick = function() {
+  logout();
+  location.href = 'login/login.html';
+};

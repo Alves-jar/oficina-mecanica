@@ -27,5 +27,21 @@
       "ordens",
       "diagnostico"
     ]
+  },
+  {
+    "id": 3,
+    "nome": "Igor Alves",
+    "cargo": "Administrador",
+    "login": "alves",
+    "email": "alves@oficina.local",
+    "senha": "admin123",
+    "status": "ativo",
+    "permissoes": [
+      "dashboard",
+      "ordens",
+      "estoque",
+      "clientes",
+      "carros"
+    ]
   }
 ]

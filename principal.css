@@ -2,6 +2,8 @@
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
 .head p{margin:4px 0 0;color:var(--muted)}
 .user{color:var(--muted);font-size:14px;white-space:nowrap}
+.logout-btn{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 14px;font-weight:500;cursor:pointer;transition:filter .2s}
+.logout-btn:hover{filter:brightness(1.1)}
 .cta{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:12px 20px;font-weight:600;font-size:17px}
 .cta:hover{filter:brightness(1.1)}
 .stages{display:grid;grid-template-columns:repeat(4,1fr);background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:24px}

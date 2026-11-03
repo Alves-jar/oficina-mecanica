@@ -9,7 +9,7 @@ const message = document.getElementById("message");
 const forgotPassword = document.getElementById("forgot-password");
 
 const STORAGE_KEY = "oficina.usuario";
-const CLIENTES_LOCAIS_KEY = "oficina.clientes.locais";
+const API_BASE = "http://localhost:3000/api";
 
 function showMessage(text, type = "error") {
   message.textContent = text;
@@ -27,18 +27,6 @@ function normaliza(valor) {
     .toLowerCase();
 }
 
-function lerClientesLocais() {
-  try {
-    const clientes = JSON.parse(localStorage.getItem(CLIENTES_LOCAIS_KEY) || "[]");
-    return Array.isArray(clientes) ? clientes : [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function salvarClientesLocais(clientes) {
-  localStorage.setItem(CLIENTES_LOCAIS_KEY, JSON.stringify(clientes));
-}
 
 function salvarUsuario(usuario, tipo) {
   const payload = {
@@ -56,31 +44,6 @@ function salvarUsuario(usuario, tipo) {
   }
 }
 
-async function buscarAdmins() {
-  const resposta = await fetch("../dados/adm.json");
-  if (!resposta.ok) {
-    throw new Error("Não foi possível carregar os usuários autorizados.");
-  }
-  return resposta.json();
-}
-
-async function buscarClientes() {
-  const resposta = await fetch("../dados/clientes.json");
-  if (!resposta.ok) {
-    throw new Error("Não foi possível carregar os clientes cadastrados.");
-  }
-
-  const clientesBase = await resposta.json();
-  const clientesLocais = lerClientesLocais();
-  const mapa = new Map();
-
-  [...clientesBase, ...clientesLocais].forEach(function (cliente) {
-    if (!cliente || !cliente.email) return;
-    mapa.set(normaliza(cliente.email), cliente);
-  });
-
-  return Array.from(mapa.values());
-}
 
 const remember = document.getElementById("remember");
 const usuarioSalvo = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
@@ -128,47 +91,27 @@ form.addEventListener("submit", async (event) => {
   loginButton.textContent = "Validando...";
 
   try {
-    if (tipo === "cliente") {
-      const clientes = await buscarClientes();
-      const cliente = clientes.find(function (item) {
-        return (
-          item.ativo !== false &&
-          normaliza(item.nome) === normaliza(nome) &&
-          normaliza(item.email) === normaliza(email) &&
-          String(item.senha) === String(senha)
-        );
-      });
-
-      if (!cliente) {
-        throw new Error("Cliente não encontrado ou senha inválida.");
-      }
-
-      salvarUsuario(cliente, "cliente");
-      showMessage("Acesso do cliente autorizado. Redirecionando...", "success");
-      setTimeout(function () {
-        window.location.href = "../cliente/cliente-portal.html";
-      }, 350);
-      return;
-    }
-
-    const admins = await buscarAdmins();
-    const usuario = admins.find(function (item) {
-      return (
-        item.status === "ativo" &&
-        normaliza(item.nome) === normaliza(nome) &&
-        normaliza(item.email) === normaliza(email) &&
-        String(item.senha) === String(senha)
-      );
+    const resposta = await fetch(API_BASE + "/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email, senha, tipo })
     });
 
-    if (!usuario) {
-      throw new Error("Nome, e-mail ou senha inválidos.");
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(erro.erro || "Erro ao fazer login");
     }
 
-    salvarUsuario(usuario, "admin");
+    const usuario = await resposta.json();
+    salvarUsuario(usuario, usuario.tipo);
+
     showMessage("Acesso autorizado. Redirecionando...", "success");
     setTimeout(function () {
-      window.location.href = "../painel-oficina.html";
+      if (usuario.tipo === "cliente") {
+        window.location.href = "../cliente/cliente-portal.html";
+      } else {
+        window.location.href = "../painel-oficina.html";
+      }
     }, 350);
   } catch (error) {
     showMessage(error.message || "Não foi possível realizar o login.");

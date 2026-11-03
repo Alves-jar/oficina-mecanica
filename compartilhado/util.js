@@ -28,6 +28,16 @@ function usuarioAtual() {
   } catch (e) {}
   return { nome: "Administrador", cargo: "administrador", tipo: "admin" };
 }
+
+function salvarUsuario(u) {
+  try {
+    localStorage.setItem("oficina.usuario", JSON.stringify(u));
+  } catch (e) {}
+}
+
+function logout() {
+  localStorage.removeItem("oficina.usuario");
+}
 function usuarioLabel() {
   var u = usuarioAtual();
   if (String(u.tipo || "").toLowerCase() === "cliente") {
@@ -102,37 +112,39 @@ function msgErro(e) {
   );
 }
 
-/* ---- Ordens criadas pelo sistema (guardadas no navegador, em localStorage) ---- */
-var CHAVE_ORDENS = "oficina.ordens";
-function ordensLocais() {
-  try {
-    return JSON.parse(localStorage.getItem(CHAVE_ORDENS)) || [];
-  } catch (e) {
-    return [];
-  }
-}
-function salvaOrdensLocais(l) {
-  try {
-    localStorage.setItem(CHAVE_ORDENS, JSON.stringify(l));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-/* Lê o JSON de ordens e junta com as ordens criadas na tela "Nova ordem" */
+/* ---- API para ordens (salva no servidor, não em localStorage) ---- */
+var API_BASE = "http://localhost:3000/api";
+
 function carregaOrdens(url) {
-  return carregaJson(caminhoDados(url || DATASET.servicos)).then(function (l) {
-    return l.concat(ordensLocais());
+  return fetch(API_BASE + "/ordens")
+    .then(function (r) {
+      if (!r.ok) throw new Error("Erro ao carregar ordens");
+      return r.json();
+    })
+    .catch(function (e) {
+      console.error(e);
+      return carregaJson(caminhoDados(url || DATASET.servicos));
+    });
+}
+
+function criarOrdem(ordem) {
+  return fetch(API_BASE + "/ordens", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ordem),
+  }).then(function (r) {
+    if (!r.ok) throw new Error("Erro ao criar ordem");
+    return r.json();
   });
 }
-/* Se a ordem foi criada pelo sistema, grava nela as alterações (ex.: mudança de status) */
-function atualizaOrdemLocal(o) {
-  var l = ordensLocais(),
-    i = -1;
-  l.forEach(function (x, k) {
-    if (x.id === o.id) i = k;
+
+function atualizarOrdem(ordem) {
+  return fetch(API_BASE + "/ordens/" + ordem.id, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ordem),
+  }).then(function (r) {
+    if (!r.ok) throw new Error("Erro ao atualizar ordem");
+    return r.json();
   });
-  if (i < 0) return false;
-  l[i] = o;
-  return salvaOrdensLocais(l);
 }
