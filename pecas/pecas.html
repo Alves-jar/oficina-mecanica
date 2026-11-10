@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Busca de peças | Oficina Central</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Reutiliza o CSS compartilhado enviado no projeto -->
+  <link rel="stylesheet" href="../compartilhado/base.css">
+  <link rel="stylesheet" href="./pecas.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <span class="brand">Oficina Central</span>
+      <nav class="nav" aria-label="Principal">
+        <a href="../painel-oficina.html">Painel</a>
+        <a href="../nova-ordem/nova-ordem.html">Nova ordem</a>
+        <a href="../historico/historico.html">Histórico</a>
+        <a href="./pecas.html" aria-current="page">Peças</a>
+      </nav>
+      <span class="user">Carregando usuário…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">ESTOQUE / CATÁLOGO</p>
+        <h1>Busca de peças</h1>
+        <p class="muted">Encontre peças por nome, código ou veículo e adicione ao orçamento da ordem.</p>
+      </div>
+      <a class="back-link" href="../painel-oficina.html">← Voltar ao painel</a>
+    </section>
+
+    <section class="search-card card" aria-label="Filtros de peças">
+      <label class="search-label" for="busca">Pesquisar peça</label>
+      <div class="search-row">
+        <input id="busca" type="search" placeholder="Nome da peça, código ou veículo (ex.: Honda Civic)" autocomplete="off">
+        <button class="clear-btn" id="limpar" type="button">Limpar</button>
+      </div>
+      <div class="filter-row">
+        <label class="check-filter"><input id="somente-disponiveis" type="checkbox"> Somente peças disponíveis</label>
+        <span id="resultado-count" class="muted" aria-live="polite">Carregando peças…</span>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="catalog-section">
+        <div class="section-heading">
+          <h2>Catálogo de peças</h2>
+          <span class="muted" id="catalog-subtitle">Consulte preço e estoque</span>
+        </div>
+        <div id="lista-pecas" class="parts-grid" aria-live="polite">
+          <div class="loading card">Carregando catálogo…</div>
+        </div>
+        <p id="sem-resultados" class="empty card" hidden>Nenhuma peça encontrada. Tente outro nome, código ou veículo.</p>
+      </section>
+
+      <aside class="quote-card card">
+        <div class="quote-heading">
+          <div>
+            <p class="eyebrow">ORÇAMENTO</p>
+            <h2>Peças selecionadas</h2>
+          </div>
+          <span class="quote-count" id="quote-count">0</span>
+        </div>
+        <label class="order-label" for="ordem-ref">Número da ordem de serviço</label>
+        <input id="ordem-ref" type="text" placeholder="Ex.: 1">
+        <div id="itens-orcamento" class="quote-items">
+          <p class="quote-empty">Adicione peças ao orçamento para começar.</p>
+        </div>
+        <div class="quote-total">
+          <span>Total estimado</span>
+          <strong id="quote-total">R$ 0,00</strong>
+        </div>
+        <button id="finalizar-orcamento" class="primary-btn" type="button" disabled>Adicionar ao orçamento</button>
+        <p class="quote-note">As peças selecionadas são gravadas na ordem informada (salvo no navegador, via localStorage).</p>
+      </aside>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Dados em localStorage (sem servidor Node) -->
+  <script src="../compartilhado/dados-iniciais.js"></script>
+  <script src="../compartilhado/banco.js"></script>
+  <script src="../compartilhado/util.js"></script>
+  <script src="./pecas.js"></script>
+</body>
+</html>

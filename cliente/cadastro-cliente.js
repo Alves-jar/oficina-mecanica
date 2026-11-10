@@ -8,7 +8,7 @@ const message = document.getElementById('message');
 const cadastrarButton = document.getElementById('cadastrar-button');
 
 const STORAGE_KEY = 'oficina.usuario';
-const API_BASE = 'http://localhost:3000/api';
+// const API_BASE = 'http://localhost:3000/api'; // REMOVIDO: não usa mais o servidor Node (dados no localStorage via banco.js)
 
 function normaliza(valor) {
   return String(valor || '').trim().toLowerCase();
@@ -80,25 +80,36 @@ form.addEventListener('submit', async function (event) {
   cadastrarButton.textContent = 'Cadastrando...';
 
   try {
-    const resposta = await fetch(API_BASE + '/clientes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nome: nome,
-        email: email,
-        senha: senha,
-        telefone: telefone,
-        aviso: 'E-mail',
-        ativo: true
-      })
+    // --- REMOVIDO (chamava o servidor Node) ---
+    // const resposta = await fetch(API_BASE + '/clientes', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     nome: nome,
+    //     email: email,
+    //     senha: senha,
+    //     telefone: telefone,
+    //     aviso: 'E-mail',
+    //     ativo: true
+    //   })
+    // });
+    //
+    // if (!resposta.ok) {
+    //   const erro = await resposta.json();
+    //   throw new Error(erro.erro || 'Erro ao cadastrar');
+    // }
+    //
+    // const cliente = await resposta.json();
+
+    // Agora: grava no localStorage (banco.js). Lança Error se o e-mail já existir.
+    const cliente = dbCadastrarCliente({
+      nome: nome,
+      email: email,
+      senha: senha,
+      telefone: telefone,
+      aviso: 'E-mail',
+      ativo: true
     });
-
-    if (!resposta.ok) {
-      const erro = await resposta.json();
-      throw new Error(erro.erro || 'Erro ao cadastrar');
-    }
-
-    const cliente = await resposta.json();
     salvarUsuario(cliente);
 
     mostrarMensagem('Cadastro realizado com sucesso! Você já está logado.', 'success');

@@ -53,17 +53,26 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = '../login/login.html';
   }
 
+  // --- REMOVIDO (chamava o servidor Node) ---
+  // function buscarOrdens() {
+  //   const API_BASE = 'http://localhost:3000/api';
+  //   return fetch(API_BASE + '/ordens')
+  //     .then(function (resposta) {
+  //       if (!resposta.ok) throw new Error('Erro ao carregar ordens');
+  //       return resposta.json();
+  //     })
+  //     .catch(function (erro) {
+  //       console.error(erro);
+  //       throw new Error('Não foi possível carregar os serviços.');
+  //     });
+  // }
+
+  // Agora: lê as ordens do localStorage (carregaOrdens vem de compartilhado/util.js)
   function buscarOrdens() {
-    const API_BASE = 'http://localhost:3000/api';
-    return fetch(API_BASE + '/ordens')
-      .then(function (resposta) {
-        if (!resposta.ok) throw new Error('Erro ao carregar ordens');
-        return resposta.json();
-      })
-      .catch(function (erro) {
-        console.error(erro);
-        throw new Error('Não foi possível carregar os serviços.');
-      });
+    return carregaOrdens().catch(function (erro) {
+      console.error(erro);
+      throw new Error('Não foi possível carregar os serviços.');
+    });
   }
 
   function formatarStatus(status) {

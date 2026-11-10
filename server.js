@@ -1,3 +1,6 @@
+/* SERVIDOR NODE DESATIVADO — o sistema agora grava tudo no localStorage (compartilhado/banco.js).
+   Este arquivo foi mantido só como referência; nada nele é executado.
+
 const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
@@ -172,3 +175,5 @@ app.get('/api/dados/:arquivo', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+*/

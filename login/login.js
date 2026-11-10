@@ -9,7 +9,7 @@ const message = document.getElementById("message");
 const forgotPassword = document.getElementById("forgot-password");
 
 const STORAGE_KEY = "oficina.usuario";
-const API_BASE = "http://localhost:3000/api";
+// const API_BASE = "http://localhost:3000/api"; // REMOVIDO: não usa mais o servidor Node (dados no localStorage via banco.js)
 
 function showMessage(text, type = "error") {
   message.textContent = text;
@@ -91,18 +91,22 @@ form.addEventListener("submit", async (event) => {
   loginButton.textContent = "Validando...";
 
   try {
-    const resposta = await fetch(API_BASE + "/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome, email, senha, tipo })
-    });
+    // --- REMOVIDO (chamava o servidor Node) ---
+    // const resposta = await fetch(API_BASE + "/login", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ nome, email, senha, tipo })
+    // });
+    //
+    // if (!resposta.ok) {
+    //   const erro = await resposta.json();
+    //   throw new Error(erro.erro || "Erro ao fazer login");
+    // }
+    //
+    // const usuario = await resposta.json();
 
-    if (!resposta.ok) {
-      const erro = await resposta.json();
-      throw new Error(erro.erro || "Erro ao fazer login");
-    }
-
-    const usuario = await resposta.json();
+    // Agora: confere e-mail/senha nos dados do localStorage (banco.js). Lança Error se inválido.
+    const usuario = dbLogin(email, senha, tipo);
     salvarUsuario(usuario, usuario.tipo);
 
     showMessage("Acesso autorizado. Redirecionando...", "success");
